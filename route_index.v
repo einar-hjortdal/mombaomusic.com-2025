@@ -7,18 +7,10 @@ const index_html = $embed_file('index.html')
 const to_replace = '___replace'
 const static_path = '/static'
 const images_path = '${static_path}/images'
-const horizontal_keyword = 'horizontal'
 
 fn handle_error_500(mut ctx Context, message string) veb.Result {
 	ctx.res.set_status(.internal_server_error)
 	return ctx.text(message)
-}
-
-fn css_class_horizontal(filename string) string {
-	if filename.contains(horizontal_keyword) {
-		return horizontal_keyword
-	}
-	return ''
 }
 
 fn build_image_list() !string {
@@ -26,13 +18,17 @@ fn build_image_list() !string {
 	mut images := []string{len: files.len}
 	for i := 0; i < files.len; i++ {
 		filename := files[i]
-		images[i] = "
-			<li ${css_class_horizontal(filename)}>
-				<img loading='lazy' src='${images_path}/${filename}'/>
-			</li>
-		"
+		// Note: do not add whitespace before/after li
+		images[i] = "<li class='image-li'>
+				<div class='image-container'>
+					<img class='image-img' loading='lazy' src='${images_path}/${filename}'/>
+				</div>
+		</li>"
 	}
-	return "<ul class='image-list'>${images.join('')}</ul>"
+	// return "<ul class='image-ul'>${images.join('')}</ul>"
+
+	// artificially create more images, I don't have anough to work with
+	return "<ul class='image-ul'>${images.join('')}${images.join('')}</ul>"
 }
 
 @['/'; get]
