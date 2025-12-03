@@ -28,6 +28,21 @@
   <meta name="twitter:image" content="/static/twitter-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "MusicGroup",
+      "name": "Mombao",
+      "logo": "https://mombaomusic.com/static/mombao-logo.png",
+      "url": "https://mombaomusic.com/",
+      "sameAs": [
+        "https://www.facebook.com/mombaomusic/",
+        "https://www.instagram.com/mombao_mombao/",
+        "http://www.youtube.com/@mombaomusic5156"
+      ]
+    }
+  </script>
+
   <!-- icons -->
   <link rel='shortcut icon' href='/static/favicon.ico' />
   <link rel="icon" href="/static/favicon-32.jpg" sizes="32x32" />
@@ -64,7 +79,10 @@
   <main>
     <div class="logo-container-outer">
       <div class="logo-container-inner">
-        <img class="logo-img" src="/static/mombao-logo.svg" alt="Mombao logo" />
+        <object class="logo" data="/static/mombao-logo.svg" type="image/svg+xml" title="Mombao logo">
+          <!-- TODO provide fallback -->
+          <img src="/static/mombao-logo.png" alt="Mombao logo">
+        </object>
       </div>
     </div>
 
