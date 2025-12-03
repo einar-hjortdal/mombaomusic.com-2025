@@ -1,6 +1,5 @@
 module main
 
-import arrays
 import os
 import veb
 
@@ -19,29 +18,18 @@ fn build_image_list() !string {
 	mut images := []string{len: files.len}
 	for i := 0; i < files.len; i++ {
 		filename := files[i]
-
-		// we put 4 images per row, first one needs no left padding, last one needs no right padding
-		// TODO refactor, this looks silly
-		mut image_container_classes := ['image-container']
-		if i % 4 == 0 {
-			image_container_classes = arrays.concat(image_container_classes, 'image-container-first-of-row')
-		} else if i % 4 == 3 {
-			image_container_classes = arrays.concat(image_container_classes, 'image-container-last-of-row')
-		} else {
-			image_container_classes = arrays.concat(image_container_classes, 'image-container-middle')
-		}
-
-		// Note: do not add whitespace before/after li
-		images[i] = "<li class='image-li'>
-				<div class='${image_container_classes.join(' ')}'>
-					<img class='image-img' loading='lazy' src='${images_path}/${filename}'/>
+		images[i] = "
+		<li>
+				<div>
+					<img loading='lazy' src='${images_path}/${filename}'/>
 				</div>
-		</li>"
+		</li>
+		"
 	}
-	// return "<ul class='image-ul'>${images.join('')}</ul>"
+	// return images.join('')
 
 	// artificially create more images, I don't have anough to work with
-	return "<ul class='image-ul'>${images.join('')}${images.join('')}</ul>"
+	return '${images.join('')}${images.join('')}'
 }
 
 @['/'; get]

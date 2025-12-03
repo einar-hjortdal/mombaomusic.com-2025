@@ -4,10 +4,6 @@ body {
   /* Disable tap highlights */
 }
 
-html {
-  font-size: 100%;
-}
-
 body {
   font-family: sans-serif;
   text-rendering: optimizeLegibility;
@@ -73,21 +69,56 @@ ul {
   list-style: none;
   margin: unset;
   padding: unset;
+
+  /* eliminate whitespace between li children */
+  font-size: 0;
+}
+
+li {
+  /* restore font size to normal */
+  font-size: initial;
+}
+
+.header-container {
+  position: fixed;
+  width: 100%;
 }
 
 .nav-ul {
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+  padding: 1.25% 2.5%;
 }
 
 .nav-li {
   display: inline-block;
-  width: 10%;
+  box-sizing: border-box;
+  width: 25%;
+  border: 1px solid #EBEBEB;
+  transition: border-color 0.3s ease-in-out;
+  padding: .25% 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.nav-ul .nav-li:first-child {
+  border-right: none;
+}
+
+.nav-ul .nav-li:last-child {
+  border-left: none;
+}
+
+.nav-li:hover {
+  border-color: #92e2f7;
 }
 
 .nav-a {
   display: block;
   color: #EBEBEB;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-a:hover {
+  color: #92e2f7;
 }
 
 .logo-container-outer {
@@ -96,6 +127,7 @@ ul {
   height: 100%;
   pointer-events: none;
 }
+
 
 .logo-container-inner {
   position: absolute;
@@ -111,38 +143,36 @@ ul {
   object-fit: contain;
 }
 
-.image-ul {
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+.main-image-ul {
+  padding: 3.75% 2.5%;
 }
 
-.image-li {
+.main-image-ul li {
   display: inline-block;
   width: 25%;
 }
 
-.image-img {
+.main-image-ul li div {
+  height: 400px;
+  padding: 5%;
+}
+
+.main-image-ul li:nth-child(4n + 1) div {
+  padding-left: 0;
+}
+
+.main-image-ul li:nth-child(4n + 4) div {
+  padding-right: 0;
+}
+
+.main-image-ul li img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-
-.image-container {
-  height: 300px;
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
-.image-container-first-of-row {
-  padding-right: 7.5%;
-}
-
-.image-container-last-of-row {
-  padding-left: 7.5%;
-}
-
-.image-container-middle {
-  padding-right: 7.5%;
-  padding-left: 7.5%;
+.footer-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }

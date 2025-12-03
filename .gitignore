@@ -23,5 +23,9 @@ bin/
 *.db
 *.js
 
+mombaomusic
 static/images
 static/*.png
+static/*.svg
+static/*.jpg
+static/*.ico
