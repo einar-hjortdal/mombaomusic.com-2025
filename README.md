@@ -13,7 +13,7 @@ docker run \
   --rm \
   --detach \
   --name=mombaomusic-app \
-  --publish=8080:12200 \
+  --publish=12200:8080 \
   mombaomusic-app
 
 # now configure the web server
