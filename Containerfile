@@ -10,6 +10,8 @@ RUN dnf update --refresh --assumeyes && \
   cd /srv && \
   /usr/local/v/v -prod .
 
-CMD ["/srv/mombaomusic"]
+WORKDIR /srv
+
+CMD ["./mombaomusic"]
 
 EXPOSE 8080
