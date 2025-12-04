@@ -79,16 +79,16 @@ li {
   font-size: initial;
 }
 
-.header-container {
+.home-header-nav {
   position: fixed;
   width: 100%;
 }
 
-.nav-ul {
+.home-header-nav-ul {
   padding: 1.25% 2.5%;
 }
 
-.nav-li {
+.home-header-nav-li {
   display: inline-block;
   box-sizing: border-box;
   width: 25%;
@@ -99,30 +99,30 @@ li {
   text-transform: uppercase;
 }
 
-.nav-ul .nav-li:first-child {
+.home-header-nav-ul .home-header-nav-li:first-child {
   border-right: none;
 }
 
-.nav-ul .nav-li:last-child {
+.home-header-nav-ul .home-header-nav-li:last-child {
   border-left: none;
 }
 
-.nav-li:hover {
+.home-header-nav-li:hover {
   border-color: #92e2f7;
 }
 
-.nav-a {
+.home-header-nav-a {
   display: block;
   color: inherit;
   transition: color 0.3s ease-in-out;
   font-size: 120%;
 }
 
-.nav-a:hover {
+.home-header-nav-a:hover {
   color: #92e2f7;
 }
 
-.logo-container-outer {
+.home-main-section {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -130,7 +130,7 @@ li {
 }
 
 
-.logo-container-inner {
+.home-main-section-container {
   position: absolute;
   width: 60%;
   height: 60%;
@@ -139,34 +139,34 @@ li {
   transform: translate(-50%, -50%);
 }
 
-.logo {
+.home-main-section-logo {
   width: 100%;
   height: 100%;
 }
 
-.logo img {
+.home-main-section-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.main-image-ul {
+.home-main-image-ul {
   padding: 5% 2.5%;
   column-count: 4;
   column-gap: 30px;
 }
 
-.main-image-ul li {
+.home-main-image-ul li {
   margin-bottom: 30px;
 }
 
-.main-image-ul li img {
+.home-main-image-ul li img {
   width: 100%;
   min-height: 400px;
   object-fit: cover;
 }
 
-.main-video {
+.home-main-video {
   width: 100%;
   padding: 5% 2.5%;
   box-sizing: border-box;
@@ -174,10 +174,20 @@ li {
   z-index: -1073741823;
 }
 
-.footer-container {
+.home-footer {
   position: fixed;
   width: 100%;
   bottom: 0;
+}
+
+.home-footer-social-ul {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.25% 2.5%;
+}
+
+.home-footer-social-ul li {
+  display: inline-block;
 }
 
 .contact-header {
