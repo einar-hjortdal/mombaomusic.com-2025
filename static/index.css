@@ -8,7 +8,7 @@ body {
   font-family: sans-serif;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  background-color: #141414;
+  background-color: #1F1F1F;
   color: #FDDF0D;
 }
 
@@ -181,6 +181,8 @@ li {
   width: 100%;
   padding: 5% 2.5%;
   box-sizing: border-box;
+  position: relative;
+  z-index: -1073741823;
 }
 
 .footer-container {
@@ -189,18 +191,44 @@ li {
   bottom: 0;
 }
 
-.contact-nav {}
-
-.contact-nav-link {
-  color: inherit;
+.contact-header {
+  padding: 1.25% 2.5%;
 }
 
-.contact-section {
-  height: 300px;
+.contact-header-inner {
+  position: relative;
 }
 
-.contact-section-heading {
-  font-weight: bolder;
+.contact-header-heading {
+  font-size: 700%;
   text-transform: uppercase;
-  font-size: 300%;
+}
+
+.contact-main {
+  padding: 5% 0;
+}
+
+.contact-header-paragraph {
+  font-size: 120%;
+  width: 33%;
+}
+
+.contact-main-ul {
+  padding: 0 2.5%;
+}
+
+.contact-main-ul-li {
+  padding: .5% 0
+}
+
+.contact-main-ul-li-heading {
+  text-transform: uppercase;
+  font-size: 120%;
+}
+
+.contact-main-ul-li-data {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 400%;
+  line-height: .75;
 }
