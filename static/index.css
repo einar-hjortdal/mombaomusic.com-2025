@@ -153,11 +153,11 @@ li {
 .home-main-image-ul {
   padding: 5% 2.5%;
   column-count: 4;
-  column-gap: 30px;
+  column-gap: 20px;
 }
 
 .home-main-image-ul li {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .home-main-image-ul li img {

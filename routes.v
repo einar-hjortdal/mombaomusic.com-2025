@@ -15,7 +15,8 @@ fn handle_error_500(mut ctx Context, message string) veb.Result {
 // TODO serialize a csv for title and alt
 // TODO add srcset
 fn build_image_list() !string {
-	files := os.ls('${os.getwd()}${images_path}')!
+	mut files := os.ls('${os.getwd()}${images_path}')!
+	files.sort()
 	mut images := []string{len: files.len}
 	for i := 0; i < files.len; i++ {
 		filename := files[i]
