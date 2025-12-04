@@ -151,34 +151,18 @@ li {
 }
 
 .main-image-ul {
-  padding: 3.75% 2.5%;
+  padding: 5% 2.5%;
+  column-count: 4;
+  column-gap: 30px;
 }
 
 .main-image-ul li {
-  display: inline-block;
-  width: 25%;
-}
-
-.main-image-ul li div {
-  height: 400px;
-  padding: 5%;
-}
-
-.main-image-ul li div div {
-  /* TODO */
-}
-
-.main-image-ul li:nth-child(4n + 1) div {
-  padding-left: 0;
-}
-
-.main-image-ul li:nth-child(4n + 4) div {
-  padding-right: 0;
+  margin-bottom: 30px;
 }
 
 .main-image-ul li img {
-  height: 100%;
   width: 100%;
+  min-height: 400px;
   object-fit: cover;
 }
 
