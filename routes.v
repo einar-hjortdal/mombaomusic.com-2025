@@ -3,7 +3,6 @@ module main
 import os
 import veb
 
-const index_html = $embed_file('index.html')
 const to_replace = '___replace'
 const static_path = '/static'
 const images_path = '${static_path}/images'
@@ -47,7 +46,7 @@ fn build_image_list() !string {
 
 @['/'; get]
 pub fn (mut app App) homepage(mut ctx Context) veb.Result {
-	index_html_string := index_html.to_string()
+	index_html := os.read_file('index.html') or { return handle_error_500(mut ctx, err.msg()) }
 	image_list := build_image_list() or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(index_html_string.replace(to_replace, image_list))
+	return ctx.html(index_html.replace(to_replace, image_list))
 }
