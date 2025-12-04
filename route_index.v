@@ -13,6 +13,15 @@ fn handle_error_500(mut ctx Context, message string) veb.Result {
 	return ctx.text(message)
 }
 
+fn css_class_orientation(filename string) string {
+	if filename.contains('horizontal') {
+		return 'class="horizontal"'
+	}
+	return 'class="vertical"'
+}
+
+// TODO serialize a csv for title and alt, include orientation
+// TODO add srcset
 fn build_image_list() !string {
 	files := os.ls('${os.getwd()}${images_path}')!
 	mut images := []string{len: files.len}
@@ -21,7 +30,11 @@ fn build_image_list() !string {
 		images[i] = "
 		<li>
 				<div>
-					<img loading='lazy' src='${images_path}/${filename}'/>
+					<img
+						${css_class_orientation(filename)}
+						loading='lazy'
+						src='${images_path}/${filename}'
+					/>
 				</div>
 		</li>
 		"

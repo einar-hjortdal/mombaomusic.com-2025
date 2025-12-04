@@ -8,8 +8,8 @@ body {
   font-family: sans-serif;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  background-color: #0A0A0A;
-  color: #EBEBEB;
+  background-color: #141414;
+  color: #FDDF0D;
 }
 
 select,
@@ -113,7 +113,7 @@ li {
 
 .nav-a {
   display: block;
-  color: #EBEBEB;
+  color: inherit;
   transition: color 0.3s ease-in-out;
 }
 
@@ -175,6 +175,12 @@ li {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.main-video {
+  width: 100%;
+  padding: 5% 2.5%;
+  box-sizing: border-box;
 }
 
 .footer-container {

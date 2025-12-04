@@ -5,6 +5,7 @@
 ```bash
 sudo dnf install docker docker-buildx && \
 sudo usermod -aG docker $USER && \
+sudo systemctl enable --now docker.socket
 sudo reboot
 
 # after reboot:
