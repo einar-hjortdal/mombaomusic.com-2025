@@ -115,6 +115,7 @@ li {
   display: block;
   color: inherit;
   transition: color 0.3s ease-in-out;
+  font-size: 120%;
 }
 
 .nav-a:hover {
@@ -163,6 +164,10 @@ li {
   padding: 5%;
 }
 
+.main-image-ul li div div {
+  /* TODO */
+}
+
 .main-image-ul li:nth-child(4n + 1) div {
   padding-left: 0;
 }
@@ -202,6 +207,29 @@ li {
 .contact-header-heading {
   font-size: 700%;
   text-transform: uppercase;
+}
+
+.contact-header-nav {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.contact-header-nav-ul-li {
+  display: inline-block;
+  padding-right: 2.5%;
+}
+
+.contact-header-nav-ul-a {
+  color: inherit;
+  transition: color 0.3s ease-in-out;
+}
+
+.contact-header-nav-ul-a:hover {
+  color: #92e2f7;
 }
 
 .contact-main {
