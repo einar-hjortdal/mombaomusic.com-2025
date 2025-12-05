@@ -92,33 +92,22 @@ li {
   display: inline-block;
   box-sizing: border-box;
   width: 25%;
-  border: 1px solid #FDDF0D;
-  transition: border-color 0.3s ease-in-out;
-  padding: .25% 0;
-  text-align: center;
-}
-
-.home-header-nav-ul .home-header-nav-li:first-child {
-  border-right: none;
-}
-
-.home-header-nav-ul .home-header-nav-li:last-child {
-  border-left: none;
-}
-
-.home-header-nav-li:hover {
-  border-color: #E42216;
 }
 
 .home-header-nav-a {
   display: block;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1.25% 0;
   color: inherit;
-  transition: color 0.3s ease-in-out;
-  font-size: 120%;
+  border-bottom: 1px solid #FDDF0D;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  font-size: 130%;
 }
 
 .home-header-nav-a:hover {
   color: #E42216;
+  border-color: #E42216;
 }
 
 .home-main-section {
@@ -129,7 +118,7 @@ li {
 }
 
 
-.home-main-section-container {
+.home-main-logo-container {
   position: absolute;
   width: 60%;
   height: 60%;
@@ -138,12 +127,12 @@ li {
   transform: translate(-50%, -50%);
 }
 
-.home-main-section-logo {
+.home-main-logo {
   width: 100%;
   height: 100%;
 }
 
-.home-main-section-logo img {
+.home-main-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -182,7 +171,7 @@ li {
 .home-footer-social-ul {
   width: fit-content;
   margin: 0 auto;
-  padding: 1.25% 2.5%;
+  padding: 2.5%;
 }
 
 .home-footer-social-li {
@@ -269,13 +258,15 @@ li {
   padding-top: 7.5%;
 }
 
-.manifesto-header-container {
+.manifesto-header-logo {
   width: 30%;
   margin: 0 auto;
 }
 
 .manifesto-header-heading {
   padding: 10% 0;
+  width: 40%;
+  margin: 0 auto;
   font-size: 600%;
   text-align-last: justify;
   white-space: nowrap;
@@ -288,7 +279,7 @@ li {
 }
 
 .manifesto-main-inner {
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
 }
 

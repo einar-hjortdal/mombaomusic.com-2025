@@ -27,21 +27,22 @@ fn build_image_list() !string {
 
 @['/'; get]
 pub fn (mut app App) homepage(mut ctx Context) veb.Result {
-	index_html := os.read_file('index.html') or { return handle_error_500(mut ctx, err.msg()) }
+	file := 'index.html'
+	index_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
 	image_list := build_image_list() or { return handle_error_500(mut ctx, err.msg()) }
 	return ctx.html(index_html.replace(to_replace, image_list))
 }
 
 @['/contact'; get]
 pub fn (mut app App) contact(mut ctx Context) veb.Result {
-	contact_html := os.read_file('contact.html') or { return handle_error_500(mut ctx, err.msg()) }
+	file := 'contact.html'
+	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
 	return ctx.html(contact_html)
 }
 
 @['/manifesto'; get]
 pub fn (mut app App) manifesto(mut ctx Context) veb.Result {
-	manifesto_html := os.read_file('manifesto.html') or {
-		return handle_error_500(mut ctx, err.msg())
-	}
+	file := 'manifesto.html'
+	manifesto_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
 	return ctx.html(manifesto_html)
 }
