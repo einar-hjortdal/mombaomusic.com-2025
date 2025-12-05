@@ -46,3 +46,10 @@ pub fn (mut app App) manifesto(mut ctx Context) veb.Result {
 	manifesto_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
 	return ctx.html(manifesto_html)
 }
+
+@['/tour'; get]
+pub fn (mut app App) tour(mut ctx Context) veb.Result {
+	file := 'tour.html'
+	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
+	return ctx.html(contact_html)
+}
