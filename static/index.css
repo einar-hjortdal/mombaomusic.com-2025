@@ -253,6 +253,11 @@ li {
   color: inherit;
   line-height: .75;
   font-size: 500%;
+  transition: color 0.3s ease-in-out;
+}
+
+.contact-main-ul-li-a:hover {
+  color: #E42216;
 }
 
 .manifesto-body {

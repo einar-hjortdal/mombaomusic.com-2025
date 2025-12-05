@@ -31,3 +31,17 @@ pub fn (mut app App) homepage(mut ctx Context) veb.Result {
 	image_list := build_image_list() or { return handle_error_500(mut ctx, err.msg()) }
 	return ctx.html(index_html.replace(to_replace, image_list))
 }
+
+@['/contact'; get]
+pub fn (mut app App) contact(mut ctx Context) veb.Result {
+	contact_html := os.read_file('contact.html') or { return handle_error_500(mut ctx, err.msg()) }
+	return ctx.html(contact_html)
+}
+
+@['/manifesto'; get]
+pub fn (mut app App) manifesto(mut ctx Context) veb.Result {
+	manifesto_html := os.read_file('manifesto.html') or {
+		return handle_error_500(mut ctx, err.msg())
+	}
+	return ctx.html(manifesto_html)
+}
