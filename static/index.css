@@ -92,11 +92,10 @@ li {
   display: inline-block;
   box-sizing: border-box;
   width: 25%;
-  border: 1px solid #EBEBEB;
+  border: 1px solid #FDDF0D;
   transition: border-color 0.3s ease-in-out;
   padding: .25% 0;
   text-align: center;
-  text-transform: uppercase;
 }
 
 .home-header-nav-ul .home-header-nav-li:first-child {
@@ -108,7 +107,7 @@ li {
 }
 
 .home-header-nav-li:hover {
-  border-color: #92e2f7;
+  border-color: #E42216;
 }
 
 .home-header-nav-a {
@@ -119,7 +118,7 @@ li {
 }
 
 .home-header-nav-a:hover {
-  color: #92e2f7;
+  color: #E42216;
 }
 
 .home-main-section {
@@ -168,7 +167,7 @@ li {
 
 .home-main-video {
   width: 100%;
-  padding: 5% 2.5%;
+  padding: 7.5% 2.5%;
   box-sizing: border-box;
   position: relative;
   z-index: -1073741823;
@@ -186,8 +185,12 @@ li {
   padding: 1.25% 2.5%;
 }
 
-.home-footer-social-ul li {
+.home-footer-social-li {
   display: inline-block;
+}
+
+.home-footer-social-object {
+  pointer-events: none;
 }
 
 .contact-header {
@@ -200,16 +203,14 @@ li {
 
 .contact-header-heading {
   font-size: 700%;
-  text-transform: uppercase;
 }
 
 .contact-header-nav {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 50%;
+  width: 30%;
   text-align: right;
-  text-transform: uppercase;
 }
 
 .contact-header-nav-ul-li {
@@ -223,7 +224,7 @@ li {
 }
 
 .contact-header-nav-ul-a:hover {
-  color: #92e2f7;
+  color: #E42216;
 }
 
 .contact-main {
@@ -244,13 +245,54 @@ li {
 }
 
 .contact-main-ul-li-heading {
-  text-transform: uppercase;
+  font-size: 140%;
+}
+
+.contact-main-ul-li-a {
+  text-decoration: none;
+  color: inherit;
+  line-height: .75;
+  font-size: 500%;
+}
+
+.manifesto-body {
+  background-color: #FDDF0D;
+  color: #1F1F1F;
+}
+
+.manifesto-header {
+  padding-top: 7.5%;
+}
+
+.manifesto-header-container {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.manifesto-header-heading {
+  padding: 10% 0;
+  font-size: 600%;
+  text-align-last: justify;
+  white-space: nowrap;
+}
+
+.manifesto-main {
+  padding-bottom: 7.5%;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.manifesto-main-inner {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.manifesto-main-body {
+  padding-bottom: 7.5%;
   font-size: 120%;
 }
 
-.contact-main-ul-li-data {
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 400%;
-  line-height: .75;
+.manifesto-main-footer {
+  text-align: center;
+  font-size: 120%;
 }
