@@ -15,6 +15,7 @@ docker run \
   --detach \
   --name=mombaomusic-app \
   --publish=12200:8080 \
+  --env=TYPEKIT_CODE=xxxxxxx \
   mombaomusic-app
 
 # now configure the web server

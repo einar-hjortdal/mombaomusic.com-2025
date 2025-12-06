@@ -3,7 +3,8 @@ module main
 import os
 import veb
 
-const to_replace = '___replace'
+const marker_typekit = '___typekit'
+const marker_home_images = '___home_images'
 const static_path = '/static'
 const images_path = '${static_path}/images'
 
@@ -30,26 +31,28 @@ pub fn (mut app App) homepage(mut ctx Context) veb.Result {
 	file := 'index.html'
 	index_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
 	image_list := build_image_list() or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(index_html.replace(to_replace, image_list))
+	return ctx.html(index_html
+		.replace(marker_typekit, app.typekit_code)
+		.replace(marker_home_images, image_list))
 }
 
 @['/contact'; get]
 pub fn (mut app App) contact(mut ctx Context) veb.Result {
 	file := 'contact.html'
 	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(contact_html)
+	return ctx.html(contact_html.replace(marker_typekit, app.typekit_code))
 }
 
 @['/manifesto'; get]
 pub fn (mut app App) manifesto(mut ctx Context) veb.Result {
 	file := 'manifesto.html'
 	manifesto_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(manifesto_html)
+	return ctx.html(manifesto_html.replace(marker_typekit, app.typekit_code))
 }
 
 @['/tour'; get]
 pub fn (mut app App) tour(mut ctx Context) veb.Result {
 	file := 'tour.html'
 	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(contact_html)
+	return ctx.html(contact_html.replace(marker_typekit, app.typekit_code))
 }
