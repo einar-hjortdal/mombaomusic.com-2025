@@ -1,3 +1,16 @@
+/*
+  Einar Hjortdal
+  Source available at https://github.com/einar-hjortdal/mombaomusic.com-2025
+
+  Breakpoint cheat sheet
+  < 576px = mobile portrait
+  < 768px = mobile landscape
+  < 992px = tablet
+  < 1300px = desktop smaller than 1280
+  < 1500px = desktop smaller than 1536
+  < 2000px = desktop smaller than 1920 
+*/
+
 body {
   margin: 0;
   -webkit-tap-highlight-color: transparent;
@@ -8,7 +21,7 @@ body {
   font-family: sans-serif;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  background-color: #1F1F1F;
+  background-color: #0A0A0A;
   color: #FDDF0D;
 }
 
@@ -69,14 +82,6 @@ ul {
   list-style: none;
   margin: unset;
   padding: unset;
-
-  /* eliminate whitespace between li children */
-  font-size: 0;
-}
-
-li {
-  /* restore font size to normal */
-  font-size: initial;
 }
 
 .home-header-nav {
@@ -86,12 +91,14 @@ li {
 
 .home-header-nav-ul {
   padding: 1.25% 2.5%;
+  font-size: 0;
 }
 
 .home-header-nav-li {
   display: inline-block;
   box-sizing: border-box;
   width: calc(100% / 6);
+  font-size: initial;
 }
 
 .home-header-nav-a {
@@ -102,7 +109,6 @@ li {
   color: inherit;
   border-bottom: 1px solid #FDDF0D;
   transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-  font-size: 130%;
 }
 
 .home-header-nav-a:hover {
@@ -139,13 +145,15 @@ li {
 }
 
 .home-main-image-ul {
-  padding: 5% 2.5%;
+  padding: 5% 2.5% 7.5%;
   column-count: 4;
   column-gap: 20px;
+  font-size: 0;
 }
 
 .home-main-image-ul li {
   margin-bottom: 20px;
+  font-size: initial;
 }
 
 .home-main-image-ul li img {
@@ -175,95 +183,70 @@ li {
 }
 
 .contact-header {
-  padding: 1.25% 2.5%;
+  padding-left: 2.5%;
+  padding-top: 5%;
 }
 
-.contact-header-inner {
-  position: relative;
+.contact-header-logo-container {
+  width: 10%;
 }
 
-.contact-header-heading {
-  font-size: 700%;
+.contact-header-logo {
+  pointer-events: none;
+}
+
+.contact-main {
+  padding: 5% 2.5%;
+}
+
+.contact-main-h1 {
+  font-size: 600%;
   line-height: 1;
-  padding-bottom: 5%;
 }
 
-.contact-header-nav {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 30%;
-  text-align: right;
+.contact-main-ul {
+  padding: 2.5% 0;
 }
 
-.contact-header-nav-a {
+.contact-main-li {
+  padding-bottom: 1%;
+}
+
+.contact-main-a {
+  text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease-in-out;
+  line-height: .75;
   font-size: 300%;
+  transition: color 0.3s ease-in-out;
 }
 
-.contact-header-nav-a:hover {
-  font-size: 300%;
+.contact-main-a:hover {
   color: #E42216;
 }
 
-.contact-header-nav-ul {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+.contact-footer-nav {
+  padding: 2.5%;
 }
 
-.contact-header-nav-ul-li {
+.contact-footer-nav-ul {}
+
+.contact-footer-nav-li {
   display: inline-block;
   padding-right: 2.5%;
 }
 
-.contact-header-nav-ul-a {
+.contact-footer-nav-a {
   color: inherit;
   transition: color 0.3s ease-in-out;
 }
 
-.contact-header-nav-ul-a:hover {
-  color: #E42216;
-}
-
-.contact-main {
-  padding: 7.5% 0;
-}
-
-.contact-header-paragraph {
-  font-size: 120%;
-  width: 33%;
-}
-
-.contact-main-ul {
-  padding: 0 2.5%;
-}
-
-.contact-main-ul-li {
-  padding: .5% 0
-}
-
-.contact-main-ul-li-heading {
-  font-size: 140%;
-}
-
-.contact-main-ul-li-a {
-  text-decoration: none;
-  color: inherit;
-  line-height: .75;
-  font-size: 500%;
-  transition: color 0.3s ease-in-out;
-}
-
-.contact-main-ul-li-a:hover {
+.contact-footer-nav-a:hover {
   color: #E42216;
 }
 
 .manifesto-body {
   background-color: #FDDF0D;
-  color: #1F1F1F;
+  color: #0A0A0A;
 }
 
 .manifesto-header {
@@ -277,7 +260,7 @@ li {
 
 .manifesto-header-heading {
   padding: 10% 0;
-  width: 40%;
+  width: 30%;
   margin: 0 auto;
   font-size: 600%;
   text-align-last: justify;
@@ -291,7 +274,7 @@ li {
 }
 
 .manifesto-main-inner {
-  width: 40%;
+  width: 30%;
   margin: 0 auto;
 }
 
@@ -305,8 +288,30 @@ li {
   font-size: 120%;
 }
 
-.tour-header-video {
-  width: 100%;
+.tour-html {
+  height: 100%;
 }
 
-.tour-main-dates {}
+.tour-body {
+  height: 100%;
+}
+
+.tour-header {
+  height: 100%;
+  overflow: hidden;
+}
+
+.tour-header-video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tour-main-dates-ul {
+  padding: 5% 0;
+}
+
+.tour-main-dates-li {
+  text-align: center;
+  font-size: 400%;
+}
