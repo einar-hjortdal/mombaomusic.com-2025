@@ -10,6 +10,7 @@ RUN echo '%__transaction_unshare %{nil}' > /etc/rpm/macros.transaction_unshare &
   cd /usr/local/v && \
   make && \
   cd /srv && \
+  /usr/local/v/v install && \
   /usr/local/v/v -prod . -o mombaomusic
 
 WORKDIR /srv

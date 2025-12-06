@@ -3,5 +3,5 @@ Module {
 	description: 'mombaomusic.com'
 	version: '3.0.0'
 	license: 'NCSA'
-	dependencies: []
+	dependencies: ['einar-hjortdal.dotenv']
 }
