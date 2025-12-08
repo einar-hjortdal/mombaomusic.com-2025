@@ -62,13 +62,11 @@ pub fn (mut app App) tour(mut ctx Context) veb.Result {
 	}
 
 	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
-	result := contact_html.replace(marker_typekit, app.typekit_code)
 	events := app.bandsintown_client.get_event_data_all('mombao') or {
 		return handle_error_500(mut ctx, err.msg())
 	}
 
 	mut tour_dates := []string{len: events.len}
-	println(events)
 	for i := 0; i < events.len; i++ {
 		event := events[i]
 		date := time.parse_iso8601(event.datetime) or {
@@ -77,9 +75,11 @@ pub fn (mut app App) tour(mut ctx Context) veb.Result {
 		tour_dates[i] = '<li>${event.venue.city} ${date.format()} ${event.venue.name}</li>'
 	}
 
-	to_cache := result.replace(marker_tour_dates, tour_dates.join(''))
+	result := contact_html
+		.replace(marker_typekit, app.typekit_code)
+		.replace(marker_tour_dates, tour_dates.join(''))
 
-	app.cache.set('tour', to_cache)
+	app.cache.set('tour', result)
 
-	return ctx.html(to_cache)
+	return ctx.html(result)
 }

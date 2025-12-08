@@ -204,11 +204,11 @@ ul {
 }
 
 .contact-main-ul {
-  padding: 2.5% 0;
+  padding: 5% 0;
 }
 
 .contact-main-li {
-  padding-bottom: 1%;
+  padding-bottom: 2.5%;
 }
 
 .contact-main-a {
@@ -312,5 +312,5 @@ ul {
 
 .tour-main-dates-ul li {
   text-align: center;
-  font-size: 300%;
+  font-size: 200%;
 }
