@@ -1,12 +1,15 @@
 module main
 
 import os
+import time
 import veb
 
 const marker_typekit = '___typekit'
 const marker_home_images = '___home_images'
+const marker_tour_dates = '___tour_dates'
 const static_path = '/static'
 const images_path = '${static_path}/images'
+const bandsintown_artist_name = 'MOMBAO'
 
 fn handle_error_500(mut ctx Context, message string) veb.Result {
 	ctx.res.set_status(.internal_server_error)
@@ -53,6 +56,30 @@ pub fn (mut app App) manifesto(mut ctx Context) veb.Result {
 @['/tour'; get]
 pub fn (mut app App) tour(mut ctx Context) veb.Result {
 	file := 'tour.html'
+
+	if cached := app.cache.get('tour') {
+		return ctx.html(cached)
+	}
+
 	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(contact_html.replace(marker_typekit, app.typekit_code))
+	result := contact_html.replace(marker_typekit, app.typekit_code)
+	events := app.bandsintown_client.get_event_data_all('mombao') or {
+		return handle_error_500(mut ctx, err.msg())
+	}
+
+	mut tour_dates := []string{len: events.len}
+	println(events)
+	for i := 0; i < events.len; i++ {
+		event := events[i]
+		date := time.parse_iso8601(event.datetime) or {
+			return handle_error_500(mut ctx, err.msg())
+		}
+		tour_dates[i] = '<li>${event.venue.city} ${date.format()} ${event.venue.name}</li>'
+	}
+
+	to_cache := result.replace(marker_tour_dates, tour_dates.join(''))
+
+	app.cache.set('tour', to_cache)
+
+	return ctx.html(to_cache)
 }

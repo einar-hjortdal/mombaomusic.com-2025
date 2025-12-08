@@ -310,7 +310,7 @@ ul {
   padding: 5% 0;
 }
 
-.tour-main-dates-li {
+.tour-main-dates-ul li {
   text-align: center;
-  font-size: 400%;
+  font-size: 300%;
 }
