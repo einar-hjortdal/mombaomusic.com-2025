@@ -11,6 +11,15 @@ import einar_hjortdal.bandsintown
 const env_typekit_code = 'TYPEKIT_CODE'
 const env_bandsintown_api_key = 'BANDSINTOWN_API_KEY'
 const env_cache_duration = 'CACHE_DURATION'
+const env_debug = 'CACHE_DURATION'
+
+fn set_log_level() {
+	if os.getenv(env_debug) == 'true' {
+		log.set_level(log.Level.debug)
+	} else {
+		log.set_level(log.Level.info)
+	}
+}
 
 struct CacheEntry {
 	expires time.Time
@@ -98,7 +107,7 @@ fn get_in_memoty_cache() &InMemoryCache {
 // TODO on startup gzip statics that can be gzipped, middleware serve gzipped if browser supports it.
 fn main() {
 	dotenv.load()
-	log.set_level(.debug)
+	set_log_level()
 
 	mut app := &App{
 		typekit_code:       get_typekit_code()
