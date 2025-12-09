@@ -13,8 +13,12 @@ const env_bandsintown_api_key = 'BANDSINTOWN_API_KEY'
 const env_cache_duration = 'CACHE_DURATION'
 const env_debug = 'DEBUG'
 
+fn is_debug() bool {
+	return os.getenv(env_debug) == 'true'
+}
+
 fn set_log_level() {
-	if os.getenv(env_debug) == 'true' {
+	if is_debug() {
 		log.set_level(log.Level.debug)
 	} else {
 		log.set_level(log.Level.info)
@@ -33,7 +37,10 @@ mut:
 }
 
 fn (mut c InMemoryCache) set(key string, value string) {
-	log.debug('Setting new cache entry with key `${key}`')
+	if is_debug() {
+		return
+	}
+
 	c.data[key] = CacheEntry{
 		expires: time.now().add(c.duration)
 		value:   value
@@ -42,17 +49,14 @@ fn (mut c InMemoryCache) set(key string, value string) {
 
 fn (mut c InMemoryCache) get(key string) ?string {
 	if key !in c.data {
-		log.debug('Cache entry with key `${key}` not found, returning none')
 		return none
 	}
 
 	entry := c.data[key]
 	if (entry.expires - time.now()) < 0 {
-		log.debug('Cache entry with key `${key}` expired, returning none')
 		return none
 	}
 
-	log.debug('Cache entry with key `${key}` found, returning value')
 	return entry.value
 }
 
