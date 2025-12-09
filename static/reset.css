@@ -1,0 +1,76 @@
+/*
+  Einar Hjortdal
+  Source available at https://github.com/einar-hjortdal/mombaomusic.com-2025
+*/
+
+body {
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  /* Disable tap highlights */
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  background-color: #0A0A09;
+  color: #FDDF0D;
+}
+
+select,
+textarea,
+input,
+button {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  border: none;
+  padding: unset;
+}
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: unset;
+  padding: unset;
+}

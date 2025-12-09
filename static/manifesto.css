@@ -1,0 +1,48 @@
+/*
+  Einar Hjortdal
+  Source available at https://github.com/einar-hjortdal/mombaomusic.com-2025
+*/
+
+.manifesto-body {
+  background-color: #FDDF0D;
+  color: #0A0A09;
+}
+
+.manifesto-header {
+  padding-top: 7.5%;
+}
+
+.manifesto-header-logo {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.manifesto-header-heading {
+  padding: 10% 0;
+  width: 30%;
+  margin: 0 auto;
+  font-size: 600%;
+  text-align-last: justify;
+  white-space: nowrap;
+}
+
+.manifesto-main {
+  padding-bottom: 7.5%;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.manifesto-main-inner {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.manifesto-main-body {
+  padding-bottom: 7.5%;
+  font-size: 120%;
+}
+
+.manifesto-main-footer {
+  text-align: center;
+  font-size: 120%;
+}

@@ -1,0 +1,64 @@
+/*
+  Einar Hjortdal
+  Source available at https://github.com/einar-hjortdal/mombaomusic.com-2025
+*/
+
+.contact-header {
+  padding-left: 2.5%;
+  padding-top: 5%;
+}
+
+.contact-header-logo-container {
+  width: 10%;
+}
+
+.contact-header-logo {
+  pointer-events: none;
+}
+
+.contact-main {
+  padding: 5% 2.5%;
+}
+
+.contact-main-h1 {
+  font-size: 600%;
+  line-height: 1;
+}
+
+.contact-main-ul {
+  padding: 5% 0;
+}
+
+.contact-main-li {
+  padding-bottom: 2.5%;
+}
+
+.contact-main-a {
+  text-decoration: none;
+  color: inherit;
+  line-height: .75;
+  font-size: 300%;
+  transition: color 0.3s ease-in-out;
+}
+
+.contact-main-a:hover {
+  color: #E42216;
+}
+
+.contact-footer-nav {
+  padding: 2.5%;
+}
+
+.contact-footer-nav-li {
+  display: inline-block;
+  padding-right: 2.5%;
+}
+
+.contact-footer-nav-a {
+  color: inherit;
+  transition: color 0.3s ease-in-out;
+}
+
+.contact-footer-nav-a:hover {
+  color: #E42216;
+}

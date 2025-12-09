@@ -1,0 +1,32 @@
+/*
+  Einar Hjortdal
+  Source available at https://github.com/einar-hjortdal/mombaomusic.com-2025
+*/
+
+.tour-html {
+  height: 100%;
+}
+
+.tour-body {
+  height: 100%;
+}
+
+.tour-header {
+  height: 100%;
+  overflow: hidden;
+}
+
+.tour-header-video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tour-main-dates-ul {
+  padding: 5% 0;
+}
+
+.tour-main-dates-ul li {
+  text-align: center;
+  font-size: 200%;
+}

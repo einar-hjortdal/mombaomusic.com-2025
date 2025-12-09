@@ -1,87 +1,7 @@
 /*
   Einar Hjortdal
   Source available at https://github.com/einar-hjortdal/mombaomusic.com-2025
-
-  Breakpoint cheat sheet
-  < 576px = mobile portrait
-  < 768px = mobile landscape
-  < 992px = tablet
-  < 1300px = desktop smaller than 1280
-  < 1500px = desktop smaller than 1536
-  < 2000px = desktop smaller than 1920 
 */
-
-body {
-  margin: 0;
-  -webkit-tap-highlight-color: transparent;
-  /* Disable tap highlights */
-}
-
-body {
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  background-color: #0A0A09;
-  color: #FDDF0D;
-}
-
-select,
-textarea,
-input,
-button {
-  font: inherit;
-  letter-spacing: inherit;
-  word-spacing: inherit;
-  border: none;
-  padding: unset;
-}
-
-blockquote,
-dl,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-  margin: 0;
-  overflow-wrap: break-word;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: block;
-}
-
-a {
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-  margin: unset;
-  padding: unset;
-}
 
 .home-header-nav {
   position: fixed;
@@ -122,7 +42,6 @@ ul {
   pointer-events: none;
 }
 
-
 .home-main-logo-container {
   position: absolute;
   width: 60%;
@@ -144,20 +63,20 @@ ul {
 }
 
 .home-main-image-ul {
-  padding: 5% 2.5% 7.5%;
-  column-count: 4;
-  column-gap: 20px;
+  padding: 10% 2.5%;
+  column-count: 2;
+  column-gap: 10px;
   font-size: 0;
 }
 
 .home-main-image-ul li {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: initial;
 }
 
 .home-main-image-ul li img {
   width: 100%;
-  min-height: 400px;
+  min-height: 200px;
   object-fit: cover;
 }
 
@@ -179,138 +98,57 @@ ul {
 
 .home-footer-social-object {
   pointer-events: none;
+  width: 28px;
 }
 
-.contact-header {
-  padding-left: 2.5%;
-  padding-top: 5%;
+/* TODO mobile menu */
+
+@media screen and (min-width: 576px) {
+  .home-main-image-ul {
+    padding: 7.5% 2.5%;
+    column-count: 3;
+    column-gap: 20px;
+  }
+
+  .home-main-image-ul li {
+    margin-bottom: 20px;
+  }
+
+  .home-main-image-ul li img {
+    min-height: 300px;
+  }
+
+  .home-footer-social-object {
+    width: unset;
+  }
 }
 
-.contact-header-logo-container {
-  width: 10%;
+@media screen and (min-width: 1300px) {
+  .home-main-image-ul {
+    padding: 5% 2.5% 7.5%;
+    column-count: 4;
+  }
+
+  .home-main-image-ul li img {
+    min-height: 400px;
+  }
 }
 
-.contact-header-logo {
-  pointer-events: none;
-}
+@media screen and (min-width: 2000px) {
+  .home-header-nav-a {
+    font-size: 160%;
+    border-bottom: 2px solid #FDDF0D;
+  }
 
-.contact-main {
-  padding: 5% 2.5%;
-}
+  .home-main-image-ul {
+    column-gap: 40px;
+  }
 
-.contact-main-h1 {
-  font-size: 600%;
-  line-height: 1;
-}
+  .home-main-image-ul li {
+    margin-bottom: 40px;
+  }
 
-.contact-main-ul {
-  padding: 5% 0;
-}
-
-.contact-main-li {
-  padding-bottom: 2.5%;
-}
-
-.contact-main-a {
-  text-decoration: none;
-  color: inherit;
-  line-height: .75;
-  font-size: 300%;
-  transition: color 0.3s ease-in-out;
-}
-
-.contact-main-a:hover {
-  color: #E42216;
-}
-
-.contact-footer-nav {
-  padding: 2.5%;
-}
-
-.contact-footer-nav-ul {}
-
-.contact-footer-nav-li {
-  display: inline-block;
-  padding-right: 2.5%;
-}
-
-.contact-footer-nav-a {
-  color: inherit;
-  transition: color 0.3s ease-in-out;
-}
-
-.contact-footer-nav-a:hover {
-  color: #E42216;
-}
-
-.manifesto-body {
-  background-color: #FDDF0D;
-  color: #0A0A09;
-}
-
-.manifesto-header {
-  padding-top: 7.5%;
-}
-
-.manifesto-header-logo {
-  width: 30%;
-  margin: 0 auto;
-}
-
-.manifesto-header-heading {
-  padding: 10% 0;
-  width: 30%;
-  margin: 0 auto;
-  font-size: 600%;
-  text-align-last: justify;
-  white-space: nowrap;
-}
-
-.manifesto-main {
-  padding-bottom: 7.5%;
-  text-align: justify;
-  hyphens: auto;
-}
-
-.manifesto-main-inner {
-  width: 30%;
-  margin: 0 auto;
-}
-
-.manifesto-main-body {
-  padding-bottom: 7.5%;
-  font-size: 120%;
-}
-
-.manifesto-main-footer {
-  text-align: center;
-  font-size: 120%;
-}
-
-.tour-html {
-  height: 100%;
-}
-
-.tour-body {
-  height: 100%;
-}
-
-.tour-header {
-  height: 100%;
-  overflow: hidden;
-}
-
-.tour-header-video {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.tour-main-dates-ul {
-  padding: 5% 0;
-}
-
-.tour-main-dates-ul li {
-  text-align: center;
-  font-size: 200%;
+  .home-main-image-ul li img {
+    min-height: 800px;
+  }
 }
