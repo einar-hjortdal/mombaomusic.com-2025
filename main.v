@@ -11,7 +11,7 @@ import einar_hjortdal.bandsintown
 const env_typekit_code = 'TYPEKIT_CODE'
 const env_bandsintown_api_key = 'BANDSINTOWN_API_KEY'
 const env_cache_duration = 'CACHE_DURATION'
-const env_debug = 'CACHE_DURATION'
+const env_debug = 'DEBUG'
 
 fn set_log_level() {
 	if os.getenv(env_debug) == 'true' {
