@@ -7,9 +7,20 @@ import veb
 const marker_typekit = '___typekit'
 const marker_home_images = '___home_images'
 const marker_tour_dates = '___tour_dates'
+
 const static_path = '/static'
 const images_path = '${static_path}/images'
 const bandsintown_artist_name = 'MOMBAO'
+
+const file_name_home = 'index.html'
+const file_name_manifesto = 'manifesto.html'
+const file_name_contact = 'contact.html'
+const file_name_tour = 'tour.html'
+
+const cache_key_home = 'home'
+const cache_key_manifesto = 'manifesto'
+const cache_key_contact = 'contact'
+const cache_key_tour = 'tour'
 
 fn handle_error_500(mut ctx Context, message string) veb.Result {
 	ctx.res.set_status(.internal_server_error)
@@ -31,37 +42,61 @@ fn build_image_list() !string {
 
 @['/'; get]
 pub fn (mut app App) homepage(mut ctx Context) veb.Result {
-	file := 'index.html'
-	index_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
+	if cached := app.cache.get(cache_key_home) {
+		return ctx.html(cached)
+	}
+
+	index_html := os.read_file(file_name_home) or { return handle_error_500(mut ctx, err.msg()) }
 	image_list := build_image_list() or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(index_html
+
+	result := index_html
 		.replace(marker_typekit, app.typekit_code)
-		.replace(marker_home_images, image_list))
+		.replace(marker_home_images, image_list)
+
+	app.cache.set(cache_key_home, result)
+
+	return ctx.html(result)
 }
 
 @['/contact'; get]
 pub fn (mut app App) contact(mut ctx Context) veb.Result {
-	file := 'contact.html'
-	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(contact_html.replace(marker_typekit, app.typekit_code))
+	if cached := app.cache.get(cache_key_contact) {
+		return ctx.html(cached)
+	}
+
+	contact_html := os.read_file(file_name_contact) or {
+		return handle_error_500(mut ctx, err.msg())
+	}
+	result := contact_html.replace(marker_typekit, app.typekit_code)
+
+	app.cache.set(cache_key_contact, result)
+
+	return ctx.html(result)
 }
 
 @['/manifesto'; get]
 pub fn (mut app App) manifesto(mut ctx Context) veb.Result {
-	file := 'manifesto.html'
-	manifesto_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
-	return ctx.html(manifesto_html.replace(marker_typekit, app.typekit_code))
+	if cached := app.cache.get(cache_key_manifesto) {
+		return ctx.html(cached)
+	}
+
+	manifesto_html := os.read_file(file_name_manifesto) or {
+		return handle_error_500(mut ctx, err.msg())
+	}
+	result := manifesto_html.replace(marker_typekit, app.typekit_code)
+
+	app.cache.set(cache_key_manifesto, result)
+
+	return ctx.html(result)
 }
 
 @['/tour'; get]
 pub fn (mut app App) tour(mut ctx Context) veb.Result {
-	file := 'tour.html'
-
-	if cached := app.cache.get('tour') {
+	if cached := app.cache.get(cache_key_tour) {
 		return ctx.html(cached)
 	}
 
-	contact_html := os.read_file(file) or { return handle_error_500(mut ctx, err.msg()) }
+	tour_html := os.read_file(file_name_tour) or { return handle_error_500(mut ctx, err.msg()) }
 	events := app.bandsintown_client.get_event_data_all('mombao') or {
 		return handle_error_500(mut ctx, err.msg())
 	}
@@ -69,17 +104,23 @@ pub fn (mut app App) tour(mut ctx Context) veb.Result {
 	mut tour_dates := []string{len: events.len}
 	for i := 0; i < events.len; i++ {
 		event := events[i]
-		date := time.parse_iso8601(event.datetime) or {
+
+		// format date
+		parsed_date := time.parse_iso8601(event.datetime) or {
 			return handle_error_500(mut ctx, err.msg())
 		}
-		tour_dates[i] = '<li>${event.venue.city} ${date.format()} ${event.venue.name}</li>'
+		formatted_date := parsed_date.custom_format('DD MMM, YYYY')
+
+		// invert order
+		inverted_i := events.len - 1 - i
+		tour_dates[inverted_i] = '<li>${formatted_date} ${event.venue.city} ${event.venue.name}</li>'
 	}
 
-	result := contact_html
+	result := tour_html
 		.replace(marker_typekit, app.typekit_code)
 		.replace(marker_tour_dates, tour_dates.join(''))
 
-	app.cache.set('tour', result)
+	app.cache.set(cache_key_tour, result)
 
 	return ctx.html(result)
 }
