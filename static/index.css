@@ -9,6 +9,7 @@
 }
 
 .home-header-nav-ul {
+  display: none;
   padding: 1.25% 2.5%;
   font-size: 0;
 }
@@ -101,9 +102,11 @@
   width: 28px;
 }
 
-/* TODO mobile menu */
-
 @media screen and (min-width: 576px) {
+  .home-header-nav-ul {
+    display: block;
+  }
+
   .home-main-image-ul {
     padding: 7.5% 2.5%;
     column-count: 3;
