@@ -75,14 +75,25 @@
   <link rel="stylesheet" href="/static/index.css" />
 
   <link rel="stylesheet" href="https://use.typekit.net/___typekit.css" />
+
+  <script src="/static/index.js" defer></script>
 </head>
 
 <body>
   <header>
     <nav class="home-header-nav">
-      <!-- TODO mobile menu  -->
+      <div class="home-header-nav-name-container tk-margin-mvb-light">
+        <a class="home-header-nav-name" href="/">MOMBAO</a>
+      </div>
 
-      <ul class="home-header-nav-ul">
+      <button type="button" artia-controls="home-nav-links" aria-expanded="false" id="home-nav-links-button"
+        class="home-nav-links-button">
+        <object class="home-nav-links-object" data="/static/kabab.svg" type="image/svg+xml" title="menu">
+          <img src="/static/kabab.png" alt="menu" />
+        </object>
+      </button>
+
+      <ul id="home-nav-links" class="home-header-nav-ul">
         <li class="home-header-nav-li">
           <a class="home-header-nav-a tk-margin-mvb" href="/manifesto">manifesto</a>
         </li>
@@ -109,7 +120,7 @@
     <section class="home-main-section">
       <div class="home-main-logo-container">
         <object class="home-main-logo" data="/static/mombao-logo.svg" type="image/svg+xml" title="Mombao logo">
-          <img src="/static/mombao-logo.png" alt="Mombao logo">
+          <img src="/static/mombao-logo.png" alt="Mombao logo" />
         </object>
       </div>
     </section>
