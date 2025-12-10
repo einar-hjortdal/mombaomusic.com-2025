@@ -28,5 +28,36 @@
 
 .tour-main-dates-ul li {
   text-align: center;
-  font-size: 200%;
+  padding-bottom: 2.5%;
+}
+
+@media screen and (min-width: 576px) {
+  .tour-main-dates-ul li {
+    font-size: 140%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .tour-main-dates-ul li {
+    font-size: 160%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .tour-main-dates-ul li {
+    font-size: 180%;
+    padding-bottom: 1.25%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .tour-main-dates-ul li {
+    font-size: 200%;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .tour-main-dates-ul li {
+    font-size: 360%;
+  }
 }

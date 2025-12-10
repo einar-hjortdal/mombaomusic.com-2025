@@ -9,7 +9,7 @@
 }
 
 .contact-header-logo-container {
-  width: 10%;
+  width: 40%;
 }
 
 .contact-header-logo {
@@ -17,28 +17,34 @@
 }
 
 .contact-main {
-  padding: 5% 2.5%;
+  padding-left: 2.5%;
+  padding-top: 5%;
 }
 
 .contact-main-h1 {
-  font-size: 600%;
+  font-size: 400%;
   line-height: 1;
 }
 
 .contact-main-ul {
-  padding: 5% 0;
+  padding-top: 15%;
 }
 
 .contact-main-li {
-  padding-bottom: 2.5%;
+  padding-bottom: 5%;
 }
 
 .contact-main-a {
+  display: block;
+  font-size: 240%;
+  line-height: .75;
   text-decoration: none;
   color: inherit;
-  line-height: .75;
-  font-size: 300%;
   transition: color 0.3s ease-in-out;
+}
+
+.contact-main-domain {
+  display: none;
 }
 
 .contact-main-a:hover {
@@ -46,12 +52,14 @@
 }
 
 .contact-footer-nav {
-  padding: 2.5%;
+  padding-left: 2.5%;
+  padding-top: 15%;
 }
 
 .contact-footer-nav-li {
   display: inline-block;
-  padding-right: 2.5%;
+  padding-bottom: 2.5%;
+  padding-right: 5%;
 }
 
 .contact-footer-nav-a {
@@ -61,4 +69,96 @@
 
 .contact-footer-nav-a:hover {
   color: #E42216;
+}
+
+@media screen and (min-width: 576px) {
+  .contact-header-logo-container {
+    width: 30%;
+  }
+
+  .contact-main-h1 {
+    font-size: 500%;
+  }
+
+  .contact-main-li {
+    padding-bottom: 2.5%;
+  }
+
+  .contact-main-a {
+    font-size: 240%;
+  }
+
+  .contact-main-domain {
+    display: inline;
+  }
+
+  .contact-footer-nav-li {
+    padding-bottom: unset;
+    padding-right: 2.5%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .contact-header-logo-container {
+    width: 20%;
+  }
+
+  .contact-main-ul {
+    padding-top: 10%;
+  }
+
+  .contact-footer-nav {
+    padding-top: 10%;
+  }
+}
+
+
+@media screen and (min-width: 1300px) {
+  .contact-main-h1 {
+    font-size: 600%;
+  }
+
+  .contact-main-a {
+    font-size: 300%;
+  }
+
+  .contact-footer-nav {
+    padding-bottom: 5%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .contact-main-h1 {
+    font-size: 800%;
+  }
+
+  .contact-main-h2 {
+    font-size: 120%;
+  }
+
+  .contact-main-a {
+    font-size: 400%;
+  }
+
+  .contact-footer-nav-a {
+    font-size: 120%;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .contact-main-h1 {
+    font-size: 900%;
+  }
+
+  .contact-main-h2 {
+    font-size: 160%;
+  }
+
+  .contact-main-a {
+    font-size: 500%;
+  }
+
+  .contact-footer-nav-a {
+    font-size: 160%;
+  }
 }

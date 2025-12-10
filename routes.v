@@ -106,14 +106,20 @@ pub fn (mut app App) tour(mut ctx Context) veb.Result {
 		event := events[i]
 
 		// format date
-		parsed_date := time.parse_iso8601(event.datetime) or {
+		datetime := event.datetime
+		parsed_date := time.parse_iso8601(datetime) or {
 			return handle_error_500(mut ctx, err.msg())
 		}
 		formatted_date := parsed_date.custom_format('DD MMM, YYYY')
 
 		// invert order
 		inverted_i := events.len - 1 - i
-		tour_dates[inverted_i] = '<li>${formatted_date} ${event.venue.city} ${event.venue.name}</li>'
+		tour_dates[inverted_i] = '
+			<li>
+				<time datetime="${datetime}">${formatted_date}</time>
+				${event.venue.city} ${event.venue.name}
+			</li>
+		'
 	}
 
 	result := tour_html

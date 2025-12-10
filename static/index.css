@@ -127,6 +127,10 @@
 }
 
 @media screen and (min-width: 1300px) {
+  .home-header-nav-a {
+    font-size: 120%;
+  }
+
   .home-main-image-ul {
     padding: 5% 2.5% 7.5%;
     column-count: 4;
