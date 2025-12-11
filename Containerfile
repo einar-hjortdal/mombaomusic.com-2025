@@ -11,7 +11,7 @@ RUN echo '%__transaction_unshare %{nil}' > /etc/rpm/macros.transaction_unshare &
   make && \
   cd /srv && \
   /opt/v/v install && \
-  /opt/v/v -prod . -o mombaomusic
+  /opt/v/v . -o mombaomusic
 
 WORKDIR /srv
 
