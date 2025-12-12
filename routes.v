@@ -1,12 +1,12 @@
 module main
 
 import os
-import time
 import veb
 
 const marker_typekit = '___typekit'
 const marker_home_images = '___home_images'
-const marker_tour_dates = '___tour_dates'
+const marker_tour_dates_upcoming = '___tour_dates_upcoming'
+const marker_tour_dates_past = '___tour_dates_past'
 
 const static_path = '/static'
 const images_path = '${static_path}/images'
@@ -97,34 +97,25 @@ pub fn (mut app App) tour(mut ctx Context) veb.Result {
 	}
 
 	tour_html := os.read_file(file_name_tour) or { return handle_error_500(mut ctx, err.msg()) }
-	events := app.bandsintown_client.get_event_data_all('mombao') or {
+
+	events_upcoming := app.bandsintown_client.get_event_data_upcoming(bandsintown_artist_name) or {
 		return handle_error_500(mut ctx, err.msg())
 	}
 
-	mut tour_dates := []string{len: events.len}
-	for i := 0; i < events.len; i++ {
-		event := events[i]
-
-		// format date
-		datetime := event.datetime
-		parsed_date := time.parse_iso8601(datetime) or {
-			return handle_error_500(mut ctx, err.msg())
-		}
-		formatted_date := parsed_date.custom_format('DD MMM, YYYY')
-
-		// invert order
-		inverted_i := events.len - 1 - i
-		tour_dates[inverted_i] = '
-			<li>
-				<time datetime="${datetime}">${formatted_date}</time>
-				${event.venue.city} ${event.venue.name}
-			</li>
-		'
+	events_past := app.bandsintown_client.get_event_data_past(bandsintown_artist_name) or {
+		return handle_error_500(mut ctx, err.msg())
 	}
+
+	list_upcoming := get_event_list(events_upcoming) or {
+		return handle_error_500(mut ctx, err.msg())
+	}
+
+	list_past := get_event_list(events_past) or { return handle_error_500(mut ctx, err.msg()) }
 
 	result := tour_html
 		.replace(marker_typekit, app.typekit_code)
-		.replace(marker_tour_dates, tour_dates.join(''))
+		.replace(marker_tour_dates_upcoming, list_upcoming)
+		.replace(marker_tour_dates_past, list_past)
 
 	app.cache.set(cache_key_tour, result)
 

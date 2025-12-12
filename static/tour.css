@@ -22,41 +22,109 @@
   object-fit: cover;
 }
 
-.tour-main-dates-ul {
-  padding: 5% 0;
+.tour-main-dates-heading {
+  padding-left: 2.5%;
+  padding-bottom: 3.75%;
+  font-size: 200%;
 }
 
-.tour-main-dates-ul li {
-  text-align: center;
+.tour-main-dates-ul {
   padding-bottom: 2.5%;
 }
 
+.tour-main-dates-li {
+  padding-left: 2.5%;
+  padding-bottom: 5%;
+}
+
+.tour-main-dates-li:hover {
+  background-color: #FDDF0D;
+  color: #0A0A09;
+}
+
+.tour-main-dates-month-day {
+  padding-left: 2.5%;
+}
+
+.tour-main-dates-city-country {
+  display: block;
+}
+
+.tour-main-dates-venue {
+  display: block;
+}
+
 @media screen and (min-width: 576px) {
-  .tour-main-dates-ul li {
+  .tour-main-dates-heading {
+    font-size: 250%;
+  }
+
+  .tour-main-dates-li {
+    padding-top: 1.875%;
+    padding-bottom: 1.875%;
     font-size: 140%;
+  }
+
+  .tour-main-dates-time {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+  }
+
+  .tour-main-dates-year {
+    display: inline-block;
+    width: 40%;
+  }
+
+  .tour-main-dates-month-day {
+    display: inline-block;
+    padding-left: unset;
+  }
+
+  .tour-main-dates-location {
+    display: inline-block;
   }
 }
 
 @media screen and (min-width: 992px) {
-  .tour-main-dates-ul li {
+  .tour-main-dates-heading {
+    font-size: 300%;
+  }
+
+  .tour-main-dates-li {
     font-size: 160%;
   }
 }
 
 @media screen and (min-width: 1300px) {
-  .tour-main-dates-ul li {
+  .tour-main-dates-heading {
+    font-size: 350%;
+  }
+
+  .tour-main-dates-li {
     font-size: 180%;
-    padding-bottom: 1.25%;
   }
 }
 
 @media screen and (min-width: 1500px) {
-  .tour-main-dates-ul li {
+  .tour-main-dates-heading {
+    font-size: 400%;
+  }
+
+  .tour-main-dates-li {
     font-size: 200%;
+  }
+
+  .tour-main-dates-li-container {
+    width: 60%;
   }
 }
 
 @media screen and (min-width: 2000px) {
+  .tour-main-dates-heading {
+    font-size: 500%;
+  }
+
   .tour-main-dates-ul li {
     font-size: 360%;
   }
