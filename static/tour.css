@@ -1,6 +1,6 @@
 /*
   Einar Hjortdal
-  Source available at https://github.com/einar-hjortdal/mombaomusic.com-2025
+  https://github.com/einar-hjortdal/mombaomusic.com-2025
 */
 
 .tour-html {
@@ -16,7 +16,21 @@
   overflow: hidden;
 }
 
+.tour-header-logo-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 2.5%;
+  padding-right: 2.5%;
+  width: 20%;
+}
+
+.tour-header-logo {
+  pointer-events: none;
+}
+
 .tour-header-video {
+  pointer-events: none;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -88,6 +102,10 @@
 }
 
 @media screen and (min-width: 992px) {
+  .tour-header-logo-container {
+    width: 12.5%;
+  }
+
   .tour-main-dates-heading {
     font-size: 300%;
   }
