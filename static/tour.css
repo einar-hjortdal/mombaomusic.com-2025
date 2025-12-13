@@ -34,7 +34,8 @@
 
 .tour-main-dates-li {
   padding-left: 2.5%;
-  padding-bottom: 5%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
 }
 
 .tour-main-dates-li:hover {
@@ -122,10 +123,10 @@
 
 @media screen and (min-width: 2000px) {
   .tour-main-dates-heading {
-    font-size: 500%;
+    font-size: 600%;
   }
 
-  .tour-main-dates-ul li {
+  .tour-main-dates-li {
     font-size: 360%;
   }
 }
