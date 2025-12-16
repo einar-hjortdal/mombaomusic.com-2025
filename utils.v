@@ -33,23 +33,38 @@ fn split_filename(file string) !(string, string) {
 	return file[..i], file[i..]
 }
 
-// TODO: to add `loading="lazy"` to the img element, need to provide height and width attributes too.
-// Ideally: write a bash script using ImageMagick to extract width and height and add it to the file
-// name, then extract it from the file name with a function.
+fn get_image_height(file string) !string {
+	cwd := os.getwd()
+	result := os.execute('magick identify -format "%h" ${cwd}${images_path}/${file}')
+	if result.exit_code == 0 {
+		return result.output
+	}
+	return error(result.output)
+}
+
 fn build_image_list() !string {
 	mut files := get_file_list()!
 	files.sort()
 	mut images := []string{len: files.len}
 	for i := 0; i < files.len; i++ {
 		file := files[i]
+
 		filename, extension := split_filename(file) or {
 			log.debug(err.msg())
 			continue
 		}
+
+		height := get_image_height(file) or {
+			log.debug(err.msg())
+			continue
+		}
+
 		image_path := '${images_path}/${filename}'
 		images[i] = '
 			<li>
-				<img 
+				<img
+					loading="lazy"
+					height="${height}"
 					src="${image_path}${extension}"
 					srcset="${image_path}${extension} 400w, ${image_path}-600w${extension} 600w, ${image_path}-1000w${extension} 1000w"
 					sizes="(min-width: 2000px) 440px, (min-width: 1500px) 340px, (min-width: 1300px) 290px, (min-width: 992px) 461px, (min-width: 768px) 350px, (min-width: 576px) 270px, 180px"
