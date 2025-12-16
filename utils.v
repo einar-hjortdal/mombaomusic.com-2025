@@ -18,8 +18,8 @@ fn get_file_list() ![]string {
 	for i := 0; i < files.len; i++ {
 		file := files[i]
 
-		// ignore files with 600 or 1000 in their names
-		if file.contains('600') || file.contains('1000') {
+		// ignore files with 600w or 1000w in their names
+		if file.contains('600w') || file.contains('1000w') {
 			continue
 		}
 
@@ -48,7 +48,7 @@ fn build_image_list() !string {
 			<li>
 				<img 
 					loading="lazy"
-					srcset="${image_path}${extension} 400w, ${image_path}-600${extension} 600w, ${image_path}-1200${extension} 1000w"
+					srcset="${image_path}${extension} 400w, ${image_path}-600w${extension} 600w, ${image_path}-1000w${extension} 1000w"
 					src="${image_path}${extension}"
 					sizes="(min-width: 2000px) 440px, (min-width: 1500px) 340px, (min-width: 1300px) 290px, (min-width: 992px) 461px, (min-width: 768px) 350px, (min-width: 576px) 270px, 180px"
 					alt=""
