@@ -18,8 +18,8 @@ fn get_file_list() ![]string {
 	for i := 0; i < files.len; i++ {
 		file := files[i]
 
-		// ignore files with 600w or 1000w in their names
-		if file.contains('600w') || file.contains('1000w') {
+		// ignore files with -600w or -1000w in their names
+		if file.contains('-600w') || file.contains('-1000w') {
 			continue
 		}
 
@@ -33,6 +33,9 @@ fn split_filename(file string) !(string, string) {
 	return file[..i], file[i..]
 }
 
+// TODO: to add `loading="lazy"` to the img element, need to provide height and width attributes too.
+// Ideally: write a bash script using ImageMagick to extract width and height and add it to the file
+// name, then extract it from the file name with a function.
 fn build_image_list() !string {
 	mut files := get_file_list()!
 	files.sort()
@@ -47,9 +50,8 @@ fn build_image_list() !string {
 		images[i] = '
 			<li>
 				<img 
-					loading="lazy"
-					srcset="${image_path}${extension} 400w, ${image_path}-600w${extension} 600w, ${image_path}-1000w${extension} 1000w"
 					src="${image_path}${extension}"
+					srcset="${image_path}${extension} 400w, ${image_path}-600w${extension} 600w, ${image_path}-1000w${extension} 1000w"
 					sizes="(min-width: 2000px) 440px, (min-width: 1500px) 340px, (min-width: 1300px) 290px, (min-width: 992px) 461px, (min-width: 768px) 350px, (min-width: 576px) 270px, 180px"
 					alt=""
 				/>
