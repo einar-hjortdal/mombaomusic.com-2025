@@ -109,6 +109,7 @@
 
 .home-main-image-ul li img {
   width: 100%;
+  height: auto;
   min-height: 150px;
   object-fit: cover;
 }

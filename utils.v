@@ -64,7 +64,8 @@ fn build_image_list() !string {
 			<li>
 				<img
 					loading="lazy"
-					height="${height}"
+					height="${height}px"
+					width="1000px"
 					src="${image_path}${extension}"
 					srcset="${image_path}${extension} 400w, ${image_path}-600w${extension} 600w, ${image_path}-1000w${extension} 1000w"
 					sizes="(min-width: 2000px) 440px, (min-width: 1500px) 340px, (min-width: 1300px) 290px, (min-width: 992px) 461px, (min-width: 768px) 350px, (min-width: 576px) 270px, 180px"
