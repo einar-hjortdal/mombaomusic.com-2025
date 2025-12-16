@@ -109,7 +109,7 @@
 
 .home-main-image-ul li img {
   width: 100%;
-  min-height: 200px;
+  min-height: 150px;
   object-fit: cover;
 }
 
@@ -179,7 +179,6 @@
 
   .home-main-image-ul {
     padding: 7.5% 2.5%;
-    column-count: 3;
     column-gap: 20px;
   }
 
@@ -188,7 +187,7 @@
   }
 
   .home-main-image-ul li img {
-    min-height: 300px;
+    min-height: 250px;
   }
 
   .home-footer-social-object {
@@ -211,7 +210,7 @@
   }
 
   .home-main-image-ul li img {
-    min-height: 400px;
+    min-height: 350px;
   }
 }
 
@@ -234,6 +233,6 @@
   }
 
   .home-main-image-ul li img {
-    min-height: 800px;
+    min-height: 450px;
   }
 }

@@ -22,24 +22,6 @@ const cache_key_manifesto = 'manifesto'
 const cache_key_contact = 'contact'
 const cache_key_tour = 'tour'
 
-fn handle_error_500(mut ctx Context, message string) veb.Result {
-	ctx.res.set_status(.internal_server_error)
-	return ctx.text(message)
-}
-
-// TODO serialize a csv for title and alt
-// TODO add srcset
-fn build_image_list() !string {
-	mut files := os.ls('${os.getwd()}${images_path}')!
-	files.sort()
-	mut images := []string{len: files.len}
-	for i := 0; i < files.len; i++ {
-		filename := files[i]
-		images[i] = "<li><img loading='lazy' src='${images_path}/${filename}' /></li>"
-	}
-	return images.join('')
-}
-
 @['/'; get]
 pub fn (mut app App) homepage(mut ctx Context) veb.Result {
 	if cached := app.cache.get(cache_key_home) {
