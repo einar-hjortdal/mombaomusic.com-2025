@@ -17,7 +17,7 @@ docker run \
   --publish=12200:8080 \
   --env=TYPEKIT_CODE=xxxxxxx \
   --env=BANDSINTOWN_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
-  --env=CACHE_DURATION=43200 \
+  --env=CACHE_DURATION=86400 \
   mombaomusic-app
 
 # now configure the web server
