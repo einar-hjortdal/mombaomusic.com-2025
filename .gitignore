@@ -30,3 +30,4 @@ static/*.svg
 static/*.jpg
 static/*.ico
 static/*.mp4
+static/*.gz

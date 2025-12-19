@@ -67,6 +67,7 @@ pub struct Context {
 
 pub struct App {
 	veb.StaticHandler
+	veb.Middleware[Context]
 	typekit_code       string
 	bandsintown_client &bandsintown.Client
 mut:
@@ -117,9 +118,11 @@ fn main() {
 		typekit_code:       get_typekit_code()
 		bandsintown_client: get_bandsintown_client()
 		cache:              get_in_memory_cache()
+		enable_static_gzip: true
 	}
 
 	app.handle_static(static_directory, false)!
+	app.use(veb.encode_gzip[Context]())
 
 	veb.run[App, Context](mut app, 8080)
 }
