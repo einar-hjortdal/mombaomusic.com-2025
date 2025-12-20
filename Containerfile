@@ -6,6 +6,7 @@ COPY . /srv
 RUN echo '%__transaction_unshare %{nil}' > /etc/rpm/macros.transaction_unshare && \
   dnf update --nogpgcheck --refresh --assumeyes && \
   dnf install --nogpgcheck --assumeyes git make gcc glibc-devel imagemagick && \
+  dnf clean all && \
   git clone --depth=1 https://github.com/vlang/v /opt/v && \
   cd /opt/v && \
   make && \

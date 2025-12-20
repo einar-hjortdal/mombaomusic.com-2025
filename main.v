@@ -118,9 +118,9 @@ fn main() {
 		typekit_code:       get_typekit_code()
 		bandsintown_client: get_bandsintown_client()
 		cache:              get_in_memory_cache()
-		enable_static_gzip: true
 	}
 
+	app.enable_static_gzip = true
 	app.handle_static(static_directory, false)!
 	app.use(veb.encode_gzip[Context]())
 
