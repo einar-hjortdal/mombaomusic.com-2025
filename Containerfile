@@ -12,7 +12,10 @@ RUN echo '%__transaction_unshare %{nil}' > /etc/rpm/macros.transaction_unshare &
   make && \
   cd /srv && \
   /opt/v/v install && \
-  /opt/v/v . -o mombaomusic
+  /opt/v/v . -o mombaomusic && \
+  rm -rf /opt/v && \
+  rm -rf /root/.vmodules && \
+  dnf remove --assumeyes git make gcc glibc-devel
 
 WORKDIR /srv
 
