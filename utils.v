@@ -18,8 +18,8 @@ fn get_file_list() ![]string {
 	for i := 0; i < files.len; i++ {
 		file := files[i]
 
-		// ignore files with -600w or -1000w in their names
-		if file.contains('-600w') || file.contains('-1000w') {
+		// ignore compressed files and files with -600w or -1000w in their names
+		if file.ends_with('.gz') || file.contains('-600w') || file.contains('-1000w') {
 			continue
 		}
 
