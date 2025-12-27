@@ -1,6 +1,7 @@
 module main
 
 import log
+import net.http
 import os
 import strconv
 import time
@@ -110,6 +111,45 @@ fn get_in_memory_cache() &InMemoryCache {
 	}
 }
 
+fn get_file_last_mod_header_string(path string) string {
+	file_last_mod_unix := os.file_last_mod_unix('${os.getwd()}${path}')
+	file_last_mod := time.unix(file_last_mod_unix)
+	return file_last_mod.http_header_string()
+}
+
+pub fn middleware_cache_control(mut ctx Context) bool {
+	if !ctx.req.url.starts_with('/${static_directory}') {
+		return true
+	}
+
+	file_last_mod_header_string := get_file_last_mod_header_string(ctx.req.url)
+	ctx.res.header.add(http.CommonHeader.cache_control, 'public, max-age=31536000') // one year
+	ctx.res.header.add(http.CommonHeader.last_modified, file_last_mod_header_string)
+	return true
+}
+
+pub fn middleware_if_modified_since(mut ctx Context) bool {
+	if !ctx.req.url.starts_with('/${static_directory}') {
+		return true
+	}
+
+	old_last_mod_header_string := ctx.req.header.get(http.CommonHeader.if_modified_since) or {
+		return true // Browser does not have cache
+	}
+
+	file_last_mod_header_string := get_file_last_mod_header_string(ctx.req.url)
+
+	// can't parse old_last_mod_header_string to Time, string comparison instead of chronological check
+	// https://github.com/vlang/v/issues/26166
+	if !(old_last_mod_header_string == file_last_mod_header_string) {
+		return true
+	}
+
+	ctx.res.set_status(http.Status.not_modified)
+	ctx.send_response_to_client('', '')
+	return false
+}
+
 fn main() {
 	dotenv.load()
 	set_log_level()
@@ -119,6 +159,16 @@ fn main() {
 		bandsintown_client: get_bandsintown_client()
 		cache:              get_in_memory_cache()
 	}
+
+	app.use(veb.MiddlewareOptions{
+		handler: middleware_if_modified_since
+		after:   false
+	})
+
+	app.use(veb.MiddlewareOptions{
+		handler: middleware_cache_control
+		after:   true
+	})
 
 	app.enable_static_gzip = true
 	app.handle_static(static_directory, false)!
