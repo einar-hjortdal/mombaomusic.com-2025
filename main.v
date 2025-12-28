@@ -139,7 +139,8 @@ pub fn middleware_if_modified_since(mut ctx Context) bool {
 
 	file_last_mod_header_string := get_file_last_mod_header_string(ctx.req.url)
 
-	// can't parse old_last_mod_header_string to Time, string comparison instead of chronological check
+	// can't parse old_last_mod_header_string to Time
+	// do string comparison instead of chronological check
 	// https://github.com/vlang/v/issues/26166
 	if !(old_last_mod_header_string == file_last_mod_header_string) {
 		return true
