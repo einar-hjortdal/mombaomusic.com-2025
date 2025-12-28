@@ -14,6 +14,7 @@ const env_bandsintown_api_key = 'BANDSINTOWN_API_KEY'
 const env_cache_duration = 'CACHE_DURATION'
 const env_debug = 'DEBUG'
 const static_directory = 'static'
+const cache_control_max_age = '86400'
 
 fn is_debug() bool {
 	return os.getenv(env_debug) == 'true'
@@ -127,7 +128,7 @@ pub fn middleware_cache_control(mut ctx Context) bool {
 	}
 
 	file_last_mod_header_string := get_file_last_mod_header_string(ctx.req.url)
-	ctx.res.header.add(http.CommonHeader.cache_control, 'public, max-age=31536000') // one year
+	ctx.res.header.add(http.CommonHeader.cache_control, 'public, max-age=${cache_control_max_age}')
 	ctx.res.header.add(http.CommonHeader.last_modified, file_last_mod_header_string)
 	return true
 }
