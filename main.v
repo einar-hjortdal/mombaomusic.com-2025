@@ -122,6 +122,10 @@ pub fn middleware_cache_control(mut ctx Context) bool {
 		return true
 	}
 
+	if ctx.req.url.ends_with('.css') || ctx.req.url.ends_with('.xml') {
+		return true
+	}
+
 	file_last_mod_header_string := get_file_last_mod_header_string(ctx.req.url)
 	ctx.res.header.add(http.CommonHeader.cache_control, 'public, max-age=31536000') // one year
 	ctx.res.header.add(http.CommonHeader.last_modified, file_last_mod_header_string)
