@@ -77,7 +77,7 @@ fn build_image_list() !string {
 	return images.join('')
 }
 
-fn get_event_list(events []bandsintown.EventData) !string {
+fn get_event_list(events []bandsintown.EventData) ![]string {
 	mut list := []string{len: events.len}
 	for i := 0; i < events.len; i++ {
 		event := events[i]
@@ -88,11 +88,9 @@ fn get_event_list(events []bandsintown.EventData) !string {
 		year := parsed_date.custom_format('YYYY')
 		month_day := parsed_date.custom_format('DD MMMM')
 
-		// invert order
-		inverted_i := events.len - 1 - i
-		list[inverted_i] = '
+		event_element := '
 			<li class="tour-main-dates-li">
-				<div class="tour-main-dates-li-container">
+				<div>
 					<time class="tour-main-dates-time" datetime="${datetime}">
 						<span class="tour-main-dates-year tk-margin-mvb-light">${year}</span>
 						<span class="tour-main-dates-month-day tk-margin-mvb-light">${month_day}</span>
@@ -104,6 +102,24 @@ fn get_event_list(events []bandsintown.EventData) !string {
 				</div>
 			</li>
 		'
+
+		list[i] = event_element
 	}
-	return list.join('')
+	return list
+}
+
+fn get_event_list_upcoming(events []bandsintown.EventData) !string {
+	event_list := get_event_list(events)!
+	return event_list.join('')
+}
+
+fn get_event_list_past(events []bandsintown.EventData) !string {
+	event_list := get_event_list(events)!
+	mut inverted_list := []string{len: event_list.len}
+	for i := 0; i < event_list.len; i++ {
+		event := event_list[i]
+		inverted_i := event_list.len - 1 - i
+		inverted_list[inverted_i] = event
+	}
+	return inverted_list.join('')
 }

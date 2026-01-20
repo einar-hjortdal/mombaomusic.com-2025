@@ -88,11 +88,11 @@ pub fn (mut app App) tour(mut ctx Context) veb.Result {
 		return handle_error_500(mut ctx, err.msg())
 	}
 
-	list_upcoming := get_event_list(events_upcoming) or {
+	list_upcoming := get_event_list_upcoming(events_upcoming) or {
 		return handle_error_500(mut ctx, err.msg())
 	}
 
-	list_past := get_event_list(events_past) or { return handle_error_500(mut ctx, err.msg()) }
+	list_past := get_event_list_past(events_past) or { return handle_error_500(mut ctx, err.msg()) }
 
 	result := tour_html
 		.replace(marker_typekit, app.typekit_code)
