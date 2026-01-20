@@ -133,10 +133,6 @@
   .tour-main-dates-li {
     font-size: 200%;
   }
-
-  .tour-main-dates-li-container {
-    width: 60%;
-  }
 }
 
 @media screen and (min-width: 2000px) {
